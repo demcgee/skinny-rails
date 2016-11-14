@@ -29,7 +29,7 @@ the `Lookup` model (and `lookups` table) should have (something like) the follow
 - `ip_address`: a string/text field containing the IP address of the client making the lookup request : "4.4.4.8"
 - `referrer`: a string/text field containing the URL referring the link :
   "http://referrer.com/page"
-- `when`: a timestamp field containing the time the client made the request
+- `created_at`: a timestamp field containing the time the client made the request
 
 The shortening service should be able to do the following, in concept (and
 assuming the domain name for the service is (http://skinny.dev):
