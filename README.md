@@ -49,8 +49,7 @@ $ curl -v --data "url=http://some.really.long.url.com/this/is/a/path/to/a/resour
 > POST / HTTP/1.1
 > Host: skinny.dev
 > User-Agent: curl/7.49.1
-> Accept: */*
->
+> Accept: */* >
 < HTTP/1.1 201 Created
 { "location": "http://skinny.dev/1b325ac" }
 
@@ -78,7 +77,7 @@ $ curl --get http://skinny.dev/a2b3
 > User-Agent: curl/7.49.1
 > Accept: */*
 >
-< HTTP/1.1 403 Moved Permanently
+< HTTP/1.1 301 Moved
 ```
 
 1. if the slug is found, it responds with a status code of 301, and the full url
@@ -142,5 +141,12 @@ to run this project: `foreman start`
 
 check in your work regularly, and let me (@bvandgrift) know if you have any
 questions or need any help.
+
+## Libraries used:
+
+* Factory Girl -- factories and generators
+* Shoulda-Matchers -- for great justice in specs
+* RSpec-Rails -- RSpec and rails extensions for specs
+* Rubocop -- nice and tidy
 
 good luck!
