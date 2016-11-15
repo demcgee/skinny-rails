@@ -1,19 +1,28 @@
 # challenge: skinny-rails
 
-## description
+So you want to learn Rails? Or you want to show off how well you know Rails?
 
-This repo contains a code challenge created for a newly-graduated Ruby developer,
+Here's your chance. This simple app challenge has been designed with you in
+mind. The domain is small and well-known, the app is typical, and tests have
+been provided. They are not perfect! So watch out.
+
+This repo contains a code challenge created for a newly-graduated proto-Ruby developer,
 to introduce them to the world of frameworks, HTTP status codes, and object-relational
 mappings (ORMs). This repo is intended to be populated using Rails 5 and Ruby
 2.3.1.
 
 ## the challenge
 
-Build a url-shortening service (like http://bit.ly)  called "skinny" in Ruby 2.3, using the Rails
-framework (http://rubyonrails.org/), backed up by a PostgreSQL database.
+Build a url-shortening service (like http://bit.ly)  called "skinny" in Ruby
+2.3, using the Rails framework (http://rubyonrails.org/), backed up by a
+PostgreSQL database.
 
-The framework will be tested using using `curl` (https://curl.haxx.se/docs/manpage.html); it doesn't 
-need a user interface right now, just responses.
+The framework will be tested using using [`curl`](https://curl.haxx.se/docs/manpage.html); 
+it doesn't need a user interface right now, just responses. If you want to build
+one? Go crazy.
+
+To get started, `fork` this repo. If you want me to review it, or you get stuck,
+drop me a line and I'll help.
 
 ### data model
 
@@ -40,8 +49,8 @@ all response bodies should be formatted using JSON.
 
 ### feature: submitting a url
 
-a client can submit a url to the service via a POST request and receive a slug that can later be used to look up
-that url.
+a client can submit a url to the service via a POST request and receive a slug
+that can later be used to look up that url.
 
 ```curl
 $ curl -v --data "url=http://some.really.long.url.com/this/is/a/path/to/a/resource" http://skinny.dev/
@@ -139,9 +148,6 @@ gem install foreman
 to run the tests: `bin/rspec`
 to run this project: `foreman start`
 
-check in your work regularly, and let me (@bvandgrift) know if you have any
-questions or need any help.
-
 ## Libraries used:
 
 * Factory Girl -- factories and generators
@@ -150,3 +156,5 @@ questions or need any help.
 * Rubocop -- nice and tidy
 
 good luck!
+
+--Ben Vandgrift (@bvandgrift / ben@vandgrift.com)
