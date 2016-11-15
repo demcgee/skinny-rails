@@ -17,12 +17,17 @@ Build a url-shortening service (like http://bit.ly)  called "skinny" in Ruby
 2.3, using the Rails framework (http://rubyonrails.org/), backed up by a
 PostgreSQL database.
 
-The framework will be tested using using [`curl`](https://curl.haxx.se/docs/manpage.html); 
+The framework will be tested using using [`curl`](https://curl.haxx.se/docs/manpage.html);
 it doesn't need a user interface right now, just responses. If you want to build
 one? Go crazy.
 
-To get started, `fork` this repo. If you want me to review it, or you get stuck,
-drop me a line and I'll help.
+To get started, `fork` this repo. From the repo root, run `bin/bootstrap.sh`,
+which will kickstart your project. No cheating by looking at other forks!
+
+If you ever get your database completely horked and want to start with a clean
+db after migrations, run `bin/terraform.sh`.
+
+If you want me to review it, or you get stuck, drop me a line and I'll help.
 
 ### data model
 
