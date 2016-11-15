@@ -84,18 +84,28 @@ RSpec.describe "API", type: :request do
   end
 
   describe 'GET /stats/:slug' do
-    it 'fetches lookups as JSON' do
-      ct = 3
-      slug = create(:slug)
+    context 'for an existing :slug' do
+      it 'fetches lookups as JSON' do
+        ct = 3
+        slug = create(:slug)
 
-      ct.times { get "/#{slug.slug}" }
-      get "/stats/#{slug.slug}"
+        ct.times { get "/#{slug.slug}" }
+        get "/stats/#{slug.slug}"
 
-      expect(response).to have_http_status(:ok)
-      expect(response.content_type).to eq('application/json')
+        expect(response).to have_http_status(:ok)
+        expect(response.content_type).to eq('application/json')
 
-      resp = JSON.parse(response.body)
-      expect(resp['lookups']).to eq(ct)
+        resp = JSON.parse(response.body)
+        expect(resp['lookups']).to eq(ct)
+      end
+    end
+
+    context 'for a nonexistent :slug' do
+      it 'response with file not found' do
+        get "/stats/what-the-actual-funk"
+
+        expect(response).to have_http_status(404)
+      end
     end
   end
 end
