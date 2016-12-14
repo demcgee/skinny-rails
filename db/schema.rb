@@ -16,13 +16,17 @@ ActiveRecord::Schema.define(version: 20161114002541) do
   enable_extension "plpgsql"
 
   create_table "lookups", force: :cascade do |t|
+    t.integer  "slug_id"
+    t.inet     "ip_address"
+    t.text     "referrer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug_id"], name: "index_lookups_on_slug_id", using: :btree
   end
 
   create_table "slugs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text "url",  null: false
+    t.text "slug", null: false
   end
 
 end
