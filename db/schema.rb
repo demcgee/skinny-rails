@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20161114002541) do
   end
 
   create_table "slugs", force: :cascade do |t|
-    t.text "url",  null: false
-    t.text "slug", null: false
+    t.text "given_url", null: false
+    t.text "slug",      null: false
   end
 
 end

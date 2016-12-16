@@ -9,13 +9,6 @@
   </head>
 
   <body>
-    <% if flash[:slug].present? %>
-      <p class='shortened-link'>
-        The shortened url is available <%= link_to 'here',
-         url_url(flash[:slug]) %>.
-        (Right click and copy link to share it).
-      </p>
-    <% end %>
     <%= yield %>
   </body>
 </html>
