@@ -4,8 +4,8 @@ RSpec.describe Slug, type: :model do
   subject { build(:slug) }
 
   it { should validate_presence_of(:slug) }
-  it { should validate_presence_of(:url) }
-  it { should validate_uniqueness_of(:url) }
+  it { should validate_presence_of(:given_url) }
+  it { should validate_uniqueness_of(:given_url) }
   it { should have_many(:lookups) }
 
   it { expect(subject).to be_valid }
@@ -17,10 +17,10 @@ RSpec.describe Slug, type: :model do
      1234,
      "user@example.com",
      "!$?"].each_with_index do |url, idx|
-      slug = Slug.new(slug: "abcd#{idx}", url: url)
-      expect { slug.valid? }.to be_falsey
-      expect { slug.errors[:url] }.not_to be_empty
-      expect { slug.errors[:url] }.to include("is not a valid url")
+      slug = Slug.new(slug: "abcd#{idx}", given_url: url)
+      expect(slug.valid?).to be_falsey
+      expect(slug.errors[:given_url]).not_to be_empty
+      expect(slug.errors[:given_url]).to include("is not a valid url")
     end
   end
 

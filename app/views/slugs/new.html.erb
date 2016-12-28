@@ -1,0 +1,5 @@
+<%= simple_form_for(Slug.new, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.text_field :given_url %>
+  <%= f.text_field :slug, html: {placeholder: "optional"} %>
+  <%= f.submit %>
+<% end %>

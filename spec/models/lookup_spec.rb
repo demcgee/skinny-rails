@@ -18,9 +18,9 @@ RSpec.describe Lookup, type: :model do
      "!$?"].each_with_index do |referrer, idx|
       lookup = build(:lookup, referrer: referrer)
 
-      expect { lookup.valid? }.to be_falsey
-      expect { lookup.errors[:referrer] }.not_to be_empty
-      expect { lookup.errors[:referrer] }.to include("is not a valid uri")
+      expect(lookup.valid?).to be_falsey
+      expect(lookup.errors[:referrer]).not_to be_empty
+      expect(lookup.errors[:referrer]).to include("is not a valid uri")
     end
   end
 

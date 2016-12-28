@@ -3,13 +3,13 @@ FactoryGirl.define do
     "abcd#{n}"
   end
 
-  sequence :uri do |n|
+  sequence :given_url do |n|
     "http://example.com/resource/#{n}"
   end
 
   factory :slug do
     slug { generate(:slugname) }
-    url  { generate(:uri) }
+    given_url  { generate(:given_url) }
   end
 
   factory :lookup do

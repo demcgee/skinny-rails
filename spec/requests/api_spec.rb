@@ -14,14 +14,14 @@ RSpec.describe "API", type: :request do
 
       it 'creates a slug' do
         expect {
-          post '/', params: {url: generate(:url)}, as: :json
+          post '/', params: {given_url: generate(:given_url)}, as: :json
         }.to change(Slug, :count).by(1)
         expect(response).to have_http_status(:created)
       end
 
       it 'responds with a new location' do
-        url = generate(:url)
-        post '/', params: {url: url}, as: :json
+        url = generate(:given_url)
+        post '/', params: {given_url: url}, as: :json
 
         expect(response.content_type).to eq('application/json')
 
@@ -31,25 +31,25 @@ RSpec.describe "API", type: :request do
 
       it 'responds with an existing location' do
         slug = create(:slug)
-        post '/', params: {url: slug.url}, as: :json
+        post '/', params: {given_url: slug.given_url}, as: :json
 
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
 
         resp = JSON.parse(response.body)
-        expect(resp['location']).to eq(slug.url)
+        expect(resp['location']).to eq(slug.given_url)
       end
     end
 
     context 'with invalid params' do
       it 'doesnt create jack' do
         expect {
-          post '/', params: {url: 'garbage'}, as: :json
+          post '/', params: {given_url: 'garbage'}, as: :json
         }.not_to change(Slug, :count)
       end
 
       it 'responds with a boom' do
-        post '/', params: {url: 'garbage'}, as: :json
+        post '/', params: {given_url: 'garbage'}, as: :json
 
         expect(response).to have_http_status(400)
       end
@@ -62,8 +62,8 @@ RSpec.describe "API", type: :request do
         slug = create(:slug)
         get "/#{slug.slug}"
 
-        expect(response).to have_http_status(301)
-        expect(response).to redirect_to(slug.url)
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(slug.given_url)
       end
 
       it 'creates a lookup' do
