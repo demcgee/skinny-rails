@@ -16,7 +16,8 @@ class SlugsController < ApplicationController
   def show
     raise "NOOOOOOO" unless params[:slug]
     @slug = Slug.find_by(slug: params[:slug])
-    # create a new lookup
+    # create a new lookup @slug.lookups.create!( ... ? )
+    #@slug.lookups.create!(:ip_address, :referrer, @slug.id)
     redirect_to @slug.given_url
   end
 

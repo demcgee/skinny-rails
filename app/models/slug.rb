@@ -2,7 +2,9 @@ class Slug < ApplicationRecord
 
   has_many :lookups, :dependent => :destroy
   validates :given_url, presence: true, uniqueness: true
-  validates :given_url, :format => { :with => URI.regexp(%w(http https)), :message => "is not a valid url" }, allow_blank: true
+  validates :given_url, format: { with: URI.regexp(%w(http https)),
+                                  :message => "is not a valid url" },
+                        allow_blank: true
   validates :slug, presence: true
 
   def generate_slug

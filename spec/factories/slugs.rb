@@ -14,7 +14,7 @@ FactoryGirl.define do
 
   factory :lookup do
     slug
-    referrer { generate(:uri) }
+    referrer { generate(:given_url) }
     ip_address { "10.10.4.1" }
   end
 end

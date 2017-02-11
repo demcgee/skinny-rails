@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   post '/' => 'slugs#create'
   root to: "slugs#index"
 
+  get '/stats/:slug' => 'stats#show'
+
 end
